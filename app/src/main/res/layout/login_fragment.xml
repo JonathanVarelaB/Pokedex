@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainRed">
+
+    <TextView
+        android:id="@+id/titleScreenText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/pokemon_solid"
+        android:padding="10dp"
+        android:rotation="355"
+        android:shadowColor="@color/blue"
+        android:shadowDx="-5"
+        android:shadowDy="10"
+        android:shadowRadius="1"
+        android:text="@string/app_name"
+        android:textColor="@color/yellow"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleScreenText">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userNameLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/userEmailLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/clear"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/userName"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:lines="1"
+                android:maxLength="50"
+                android:textColor="@color/grey"
+                android:textColorHint="#00BCD4" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userEmailLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="@+id/userNameLayout"
+            app:layout_constraintStart_toStartOf="@+id/userNameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/userNameLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userEmailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/clear"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/userEmail"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:lines="1"
+                android:maxLength="50"
+                android:textColor="@color/grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/userSex"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+            app:layout_constraintEnd_toEndOf="@+id/userNameLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/userNameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/userEmailLayout" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/userNameLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/userNameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <RadioButton
+                android:id="@+id/maleRadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainRed"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/male"
+                android:textColor="@color/grey" />
+
+            <RadioButton
+                android:id="@+id/femaleRadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainRed"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/female"
+                android:textColor="@color/grey" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/clear"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/button_disable"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/userNameLayout"
+            app:layout_constraintStart_toStartOf="@+id/userNameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            app:strokeColor="@color/button_disable" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/mainRed"
+        app:indicatorSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:trackColor="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

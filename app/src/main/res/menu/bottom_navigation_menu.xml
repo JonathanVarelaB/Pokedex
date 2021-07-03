@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/favoriteOption"
+        android:title="@string/favorite_items"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:iconTint="@color/mainRed"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/allOption"
+        android:title="@string/all_items"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:iconTint="@color/mainRed"
+        android:enabled="true" />
+    <item
+        android:id="@+id/viewedOption"
+        android:title="@string/viewed_items"
+        android:icon="@drawable/ic_baseline_history_24"
+        android:iconTint="@color/mainRed"
+        android:fontFamily="sans-serif-medium"
+        android:enabled="true"/>
+</menu>

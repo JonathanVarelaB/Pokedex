@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Pokédex</string>
+    <string name="userName">Nombre</string>
+    <string name="userEmail">Correo Electrónico</string>
+    <string name="userSex">Sexo</string>
+    <string name="male">Masculino</string>
+    <string name="female">Femenino</string>
+    <string name="login">Ingresar</string>
+    <string name="favorite_items">Favoritos</string>
+    <string name="all_items">Todos</string>
+    <string name="viewed_items">Recientes</string>
+    <string name="empty_list">Sin resultados</string>
+    <string name="poke_height">Altura</string>
+    <string name="poke_weight">Peso</string>
+    <string name="poke_abilities">Habilidades</string>
+</resources>
