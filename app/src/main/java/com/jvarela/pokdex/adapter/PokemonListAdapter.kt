@@ -8,10 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jvarela.pokdex.R
-import com.jvarela.pokdex.model.Pokemon
+import com.jvarela.pokdex.databinding.ListFragmentBinding
+import com.jvarela.pokdex.model.entity.Pokemon
 import com.squareup.picasso.Picasso
 
-class PokemonListAdapter(val onPokemonClicked: ((Pokemon) -> (Unit))? = null, val pokemonToogleFavorite: ((Pokemon, Int) -> (Unit))? = null): RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>() {
+class PokemonListAdapter(val onPokemonClicked: ((Pokemon, Int) -> (Unit))? = null, val pokemonToogleFavorite: ((Pokemon, Int) -> (Unit))? = null): RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>() {
 
     var pokemonList: List<Pokemon> = emptyList()
     set(value) {
@@ -25,7 +26,8 @@ class PokemonListAdapter(val onPokemonClicked: ((Pokemon) -> (Unit))? = null, va
         private var favButton: Button = itemView.findViewById(R.id.favoriteButton)
 
         fun bind(model: Pokemon, position: Int) {
-            itemView.setOnClickListener { onPokemonClicked?.invoke(model) }
+            image.scaleType = ImageView.ScaleType.FIT_XY
+            itemView.setOnClickListener { onPokemonClicked?.invoke(model, position) }
             name.text = model.name
             Picasso.get().load(model.imageUrl).into(image)
             favButton.setCompoundDrawablesWithIntrinsicBounds(0, if (model.favorite) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24, 0, 0);

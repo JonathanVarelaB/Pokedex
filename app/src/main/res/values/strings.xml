@@ -9,8 +9,9 @@
     <string name="favorite_items">Favoritos</string>
     <string name="all_items">Todos</string>
     <string name="viewed_items">Recientes</string>
-    <string name="empty_list">Sin resultados</string>
+    <string name="empty_list">Sin resultados.</string>
     <string name="poke_height">Altura</string>
     <string name="poke_weight">Peso</string>
     <string name="poke_abilities">Habilidades</string>
+    <string name="LoaderText">Cargando</string>
 </resources>

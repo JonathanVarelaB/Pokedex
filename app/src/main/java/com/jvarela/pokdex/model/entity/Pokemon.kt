@@ -1,9 +1,10 @@
-package com.jvarela.pokdex.model
+package com.jvarela.pokdex.model.entity
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 
-class Pokemon(val id: String, val imageUrl: String, val name: String, val height: String, val weight: String, val abilities: List<String>, val stats: List<Stat>, var favorite: Boolean, val viewed: Boolean) :
+class Pokemon(val id: String, val imageUrl: String, val name: String, val height: String, val weight: String, val abilities: List<String>, val stats: List<FinalStat>, var favorite: Boolean, var viewed: Boolean) :
     Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
@@ -12,7 +13,7 @@ class Pokemon(val id: String, val imageUrl: String, val name: String, val height
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.createStringArrayList() ?: emptyList(),
-        parcel.createTypedArrayList(Stat) ?: emptyList(),
+        parcel.createTypedArrayList(FinalStat) ?: emptyList(),
         parcel.readByte() != 0.toByte(),
         parcel.readByte() != 0.toByte()
     ) {

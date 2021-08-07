@@ -1,50 +1,64 @@
 package com.jvarela.pokdex.fragment
 
-import android.content.ClipData
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.Filter
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.fragment.navArgs
 import com.jvarela.pokdex.R
+import com.jvarela.pokdex.databinding.MainListFragmentBinding
+import com.jvarela.pokdex.db.entity.User
+import com.jvarela.pokdex.model.APIViewModel
 import com.jvarela.pokdex.model.FilterList
-import com.jvarela.pokdex.model.ListViewModel
 
 class MainListFragment: Fragment(R.layout.main_list_fragment) {
 
-    private lateinit var bottomNav: BottomNavigationView
-    private lateinit var logoutButton: Button
-    private val viewModel: ListViewModel by activityViewModels()
+    private var _binding: MainListFragmentBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: APIViewModel by activityViewModels()
+    private val args: MainListFragmentArgs by navArgs()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = MainListFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        bottomNav = view.findViewById(R.id.bottomNavigationView)
-        logoutButton = view.findViewById(R.id.logOutButton)
-
+        showGreeting()
         viewModel.originalList.observe(viewLifecycleOwner, Observer { list ->
             if(list != null){
                 if(viewModel.selected == null)
-                    onFilterSelected(FilterList.FAVORITES)
+                    onFilterSelected(FilterList.ALL)
                 else{
                     if(viewModel.selected?.value == FilterList.ALL){
-                        bottomNav.selectedItemId = R.id.allOption
+                        binding.bottomNavigationView.selectedItemId = R.id.allOption
                     }
                     else if(viewModel.selected?.value == FilterList.FAVORITES) {
-                        bottomNav.selectedItemId = R.id.favoriteButton
+                        binding.bottomNavigationView.selectedItemId = R.id.favoriteButton
                     }
                     else if(viewModel.selected?.value == FilterList.VIEWED) {
-                        bottomNav.selectedItemId = R.id.viewedOption
+                        binding.bottomNavigationView.selectedItemId = R.id.viewedOption
                     }
                 }
             }
         })
 
-        bottomNav.setOnNavigationItemSelectedListener { item ->
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.favoriteOption -> {
                     onFilterSelected(FilterList.FAVORITES)
@@ -62,11 +76,26 @@ class MainListFragment: Fragment(R.layout.main_list_fragment) {
             }
         }
 
-        logoutButton.setOnClickListener{
+        binding.logOutButton.setOnClickListener{
+            viewModel.logout()
             findNavController().navigate(MainListFragmentDirections.actionMainListFragmentToLoginFragment())
         }
     }
 
     fun onFilterSelected(filter: FilterList) = viewModel.select(filter)
+
+    fun showGreeting(){
+        if (args.navAccess != MainNavAccess.BACK) {
+            var user: User? = viewModel.getUserSession()
+            if (user != null) {
+                val name: String? = user?.name
+                val letter: String = user?.sex?.letter ?: ""
+                var greeting: String = "Bienvenid$letter $name"
+                if (args.navAccess == MainNavAccess.REGISTER)
+                    greeting = "Registro exitoso. $greeting"
+                Toast.makeText(context, greeting, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
 }

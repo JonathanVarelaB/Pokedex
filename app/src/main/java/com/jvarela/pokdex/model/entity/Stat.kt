@@ -1,9 +1,9 @@
-package com.jvarela.pokdex.model
+package com.jvarela.pokdex.model.entity
 
 import android.os.Parcel
 import android.os.Parcelable
 
-class Stat(val name: String, val value: String): Parcelable {
+class FinalStat(val name: String, val value: String): Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
@@ -19,15 +19,14 @@ class Stat(val name: String, val value: String): Parcelable {
         TODO("Not yet implemented")
     }
 
-    companion object CREATOR : Parcelable.Creator<Stat> {
-        override fun createFromParcel(parcel: Parcel): Stat {
-            return Stat(parcel)
+    companion object CREATOR : Parcelable.Creator<FinalStat> {
+        override fun createFromParcel(parcel: Parcel): FinalStat {
+            return FinalStat(parcel)
         }
 
-        override fun newArray(size: Int): Array<Stat?> {
+        override fun newArray(size: Int): Array<FinalStat?> {
             return arrayOfNulls(size)
         }
     }
-
 
 }

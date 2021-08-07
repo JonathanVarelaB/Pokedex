@@ -131,11 +131,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif-medium"
         android:textSize="16sp"
-        tools:text="Altura: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightTextViewDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/weightTextViewDetail"
+        tools:text="Altura" />
 
     <TextView
         android:id="@+id/weightTextViewDetail"
@@ -143,11 +143,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-medium"
         android:textSize="16sp"
-        android:fontFamily="sans-serif-light"
-        tools:text="Peso: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:text="Peso" />
 
     <TextView
         android:id="@+id/abilitiesTextViewDetail"
@@ -155,21 +155,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-medium"
         android:textSize="16sp"
-        android:fontFamily="sans-serif-light"
-        tools:text="Habilidades: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heightTextViewDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/heightTextViewDetail"
+        tools:text="Habilidades" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_stat_cell" />
 
     <TextView
-        android:id="@+id/typesTextViewDetail"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Estadísticas"
         android:textSize="16sp"
-        android:fontFamily="sans-serif-light"
-        tools:text="Tipos: "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/abilitiesTextViewDetail" />
 

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
     app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.jvarela.pokdex.fragment.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_mainListFragment"
             app:destination="@id/mainListFragment"
@@ -17,7 +19,8 @@
     <fragment
         android:id="@+id/mainListFragment"
         android:name="com.jvarela.pokdex.fragment.MainListFragment"
-        android:label="MainListFragment" >
+        android:label="MainListFragment"
+        tools:layout="@layout/main_list_fragment">
         <action
             android:id="@+id/action_mainListFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -28,11 +31,15 @@
             app:destination="@id/detailFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="navAccess"
+            app:argType="com.jvarela.pokdex.fragment.MainNavAccess" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.jvarela.pokdex.fragment.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment"
+        tools:layout="@layout/detail_fragment">
         <action
             android:id="@+id/action_detailFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -45,6 +52,6 @@
             app:exitAnim="@android:anim/fade_out" />
         <argument
             android:name="pokemon"
-            app:argType="com.jvarela.pokdex.model.Pokemon" />
+            app:argType="com.jvarela.pokdex.model.entity.Pokemon" />
     </fragment>
 </navigation>
